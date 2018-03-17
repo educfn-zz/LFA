@@ -1,1 +1,1 @@
-Exercicio: Converter um inteiro n em um binário por recorrencia.
+Exercicio1: Converter um inteiro n em um binário por recorrencia.
