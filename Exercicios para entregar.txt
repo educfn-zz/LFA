@@ -1,0 +1,2 @@
+-Exercicio1: Converter um inteiro n em um binário por recorrencia.
+-Exercicio2: Decompor um inteiro n em algarismos(ex: 131 = 1,3,1).
