@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1526862878 source:c:\users\eduardo\documents\github\lfa\lfa_exercicio1\conv_bin.cpp
+	<iostream>
+	"bin.h"
+
+1526858109 c:\users\eduardo\documents\github\lfa\lfa_exercicio1\bin.h
+

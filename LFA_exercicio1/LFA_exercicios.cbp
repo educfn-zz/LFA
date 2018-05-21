@@ -32,7 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="grafo.cpp" />
+		<Unit filename="bin.h" />
+		<Unit filename="conv_bin.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
