@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1527199835 source:/home/educfn/Documentos/LFA/Gramatica_Livre_de_Lambda/GLLambda/main.cpp
+	<iostream>
+	"GLLb.h"
+
+1527199813 source:/home/educfn/Documentos/LFA/Gramatica_Livre_de_Lambda/GLLambda/GLLb.cpp
+	"GLLb.h"
+
+1527199969 /home/educfn/Documentos/LFA/Gramatica_Livre_de_Lambda/GLLambda/GLLb.h
+	<iostream>
+	<cstdlib>
+

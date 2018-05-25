@@ -25,18 +25,23 @@ while(num != -100)
         std::cout << "Digite o numero a ser convertido em binario" << std::endl
         << "Digite '-113' para ativar/desativar o debug" << std::endl
         << "ou digite '-100' para sair." << std::endl;
-        std::cin >> num;
-        std::cout << "O numero digitado foi " << num << std::endl;
-        if(num == -100) exit(0);
-        else if(num == -113)
+        std::cin >> num;//Erro: precisa impedir numero maiores que 1000000000.
+        if(num < 0 || num > 1000000000)
         {
-            debug = ((debug + 1) % 2);
-            if(debug==0) std::cout << std::endl << "debug desativado" << std::endl << std::endl;
-            else if(debug==1) std::cout << std::endl << "debug ativado" << std::endl << std::endl;
+            if(num == -100) exit(0);
+            else if(num == -113)
+            {
+                debug = ((debug + 1) % 2);
+                if(debug==0) std::cout << std::endl << "debug desativado" << std::endl << std::endl;
+                else if(debug==1) std::cout << std::endl << "debug ativado" << std::endl << std::endl;
+            }
+            else if(num < 0) std::cout << "Por favor digite um numero maior ou igual a 0." << std::endl;
+            else if(num > 1000000000) std::cout << "Você atingiu o numero limite, tente outro menor." << std::endl;
         }
-        else if(num < 0) std::cout << "Por favor digite um numero maior ou igual a 0." << std::endl;
+        std::cout << "O numero digitado foi " << num << std::endl;
+
     }
-    while (num < 0);
+    while (num < 0 || num > 1000000000);
 
     //FIM: 1- COLETA DO NUMERO.
 
