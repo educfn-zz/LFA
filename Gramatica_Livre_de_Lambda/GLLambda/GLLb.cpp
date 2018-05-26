@@ -18,8 +18,8 @@ int guardar_subconj(ling_f * l, char * esq, char * dir)
 
 	if(l != nullptr && esq != nullptr && dir != nullptr && l->inicializado == 0)
 	{
-	    conj * ptr_aux = l->subconjuntos,//Ponteiro auxiliar que ira procurar o final da lista de subconjuntos.
-	    * ptr_ant;//Outro ponteiro auxiliar que aponta para o subconjunto anterior do ptr_aux.
+	    conj ptr_aux = l->subconjuntos,//Ponteiro auxiliar que ira procurar o final da lista de subconjuntos.
+	    ptr_ant;//Outro ponteiro auxiliar que aponta para o subconjunto anterior do ptr_aux.
 
         while(ptr_aux != nullptr)//Buscar o final da lista de subconjuntos.
         {
@@ -29,6 +29,10 @@ int guardar_subconj(ling_f * l, char * esq, char * dir)
 
         //Quando chegar no final da lista apontar para o ultimo subconjunto e depois apontar para nulo
         //indicando o novo fim da lista.
+        if((ptr_aux = (conj) malloc(sizeof(subconjunto))) == nullptr)
+        {
+            std::cerr << "guardar_subconj: Erro de alocacao dinamica!" << std::endl;
+        }
         ptr_aux->ant = ptr_ant;
         ptr_aux->prox = nullptr;
         //repassar a posição das variaveis.
@@ -47,5 +51,28 @@ int guardar_subconj(ling_f * l, char * esq, char * dir)
     //parametros deste metodo, nao contem os valores esperados.
 
     return indicador_erro;
+}
+
+int mostrar_linguagem(ling_f * f)
+{
+    if(f != nullptr && f->inicializado == 0)//Verificar se o parametro nao esta vazio(nulo)
+    //e se o tipo ling_f foi 'inicializado'.
+    {
+      std::cout << "Linguagem F("<< f->expansoes << "): {" << std::endl;
+
+      conj ptr_aux = f->subconjuntos;
+
+      while(ptr_aux != nullptr)
+      {
+          //Imprime um subconjunto na tela.
+          std::cout << "("<<ptr_aux->esq << ","
+          << ptr_aux->dir << ")" << std::endl;
+          //Ir para o proximo subconjunto.
+          ptr_aux=ptr_aux->prox;
+      }
+
+      std::cout << "}" << std:: endl << std::endl;//Pular duas linhas para melhor visualizacao.
+    }
+    else return -1;
 }
 

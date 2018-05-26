@@ -5,11 +5,12 @@
 #include <iostream>
 #include <cstdlib>
 
-typedef struct subconjunto conj;
+typedef struct subconjunto * conj;
 
 typedef struct
 {
-	conj * subconjuntos;// Ira armazenar a lista de subconjuntos.
+    int expansoes;//Indica quantas expansoes esta linguagem sofreu.
+	conj subconjuntos;// Ira armazenar a lista de subconjuntos.
 	int inicializado; //Se o falor for '0' entao a variavel foi inicializada, do contrario
 	//o metodo 'inicializar_subcon()' precisa ser executado previamente a qualquer outro
 	//metodo que utilize o objeto 'ling_f'
@@ -18,8 +19,8 @@ typedef struct
 
 struct subconjunto
 {
-    conj * prox;//Ira apontar para o proximo subconjunto.
-    conj * ant;//Ira apontar para o subconjunto anterior.
+    conj prox;//Ira apontar para o proximo subconjunto.
+    conj ant;//Ira apontar para o subconjunto anterior.
 	char * esq; //Ira conter os caracteres a esquerda de um subconjunto.
 	char * dir; //Ira conter os caracteres a direita de um subconjunto.
 };
@@ -40,6 +41,11 @@ int guardar_subconj(ling_f * l, char * esq, char * dir);
 //&ling_f: repassar o objeto 'ling_f' para o metodo para realizar a adiciocao
 //Erro: Retorna '-1' caso alguma falha ocorra no processo.
 //Sucesso: Se nao ocorrem problema o metodo retorna '0'.
+
+int mostrar_linguagem(ling_f * f);
+//Mostra na tela a linguagem e seus subconjuntos.
+//Erro: Caso o valor do parametro 'ling_f * f' seja nulo ou a variavel ling_f não tenha sido
+//'inicializada', o metodo retornara '-1'.
 
 #endif //GLLB_H_
 
