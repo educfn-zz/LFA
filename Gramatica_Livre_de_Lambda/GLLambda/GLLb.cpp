@@ -76,3 +76,42 @@ int mostrar_linguagem(ling_f * f)
     else return -1;
 }
 
+void expandir_linguagem(ling_f * l, char * l_exp)
+
+{
+
+  conj ptr_aux = l->subconjunto;
+
+	while(ptr_aux != nullptr)
+
+	{
+    while(ptr_aux->prox != nullptr)
+
+		{
+
+			int contador=0;
+
+
+			while((ptr_aux->dir + contador++) != '\0')
+
+			{
+
+				int contador2 = 0;
+
+
+				while(l_exp + contador2++ != '\0')
+
+				{
+
+
+
+				}
+
+			}
+
+	 	}
+
+	}
+
+
+

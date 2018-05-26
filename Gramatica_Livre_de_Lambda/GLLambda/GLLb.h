@@ -47,5 +47,9 @@ int mostrar_linguagem(ling_f * f);
 //Erro: Caso o valor do parametro 'ling_f * f' seja nulo ou a variavel ling_f não tenha sido
 //'inicializada', o metodo retornara '-1'.
 
+void expandir_linguagem(ling_f * l, char * l_exp);
+
+
+
 #endif //GLLB_H_
 
