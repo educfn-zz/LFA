@@ -79,8 +79,7 @@ int mostrar_linguagem(ling_f * f)
 void expandir_linguagem(ling_f * l, char * l_exp)
 
 {
-
-  conj ptr_aux = l->subconjunto;
+    conj ptr_aux = l->subconjuntos;
 
 	while(ptr_aux != nullptr)
 
@@ -112,6 +111,8 @@ void expandir_linguagem(ling_f * l, char * l_exp)
 	 	}
 
 	}
+
+}
 
 
 
