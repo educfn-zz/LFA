@@ -10,3 +10,14 @@
 	<iostream>
 	<cstdlib>
 
+1527298443 source:c:\users\eduardo\documents\github\lfa\gramatica_livre_de_lambda\gllambda\main.cpp
+	<iostream>
+	"GLLb.h"
+
+1527297058 c:\users\eduardo\documents\github\lfa\gramatica_livre_de_lambda\gllambda\gllb.h
+	<iostream>
+	<cstdlib>
+
+1527297947 source:c:\users\eduardo\documents\github\lfa\gramatica_livre_de_lambda\gllambda\gllb.cpp
+	"GLLb.h"
+
