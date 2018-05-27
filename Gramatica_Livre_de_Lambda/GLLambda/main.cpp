@@ -6,16 +6,29 @@
 int main()
 {
     ling_f f;
-    char esq[10];
-    char dir[10];
+    int var_controle=0;
 
     //Coleta dos valores dos subconjuntos
     std::cout << "Digite a seguir os valores dos subconjuntos, quando terminar digite somente"
     << " 'y' na coleta dos valores." << std::endl;
     std::cout << "A letra 'Y'(ipsilon maiusculo) indica lambda." << std::endl;
 
-    while(esq[0] != 'y')
+    do
     {
+        char * esq;
+        char * dir;
+
+        //Alocacao dinamica das variaveis
+        if((esq = (char *) malloc(sizeof(char)*10))==nullptr)
+        {
+            std::cerr << "Main - esq: Erro de alocacao dinamica!" << std::endl;
+        }
+
+        if((dir = (char *) malloc(sizeof(char)*10))==nullptr)
+        {
+            std::cerr << "Main - esq: Erro de alocacao dinamica!" << std::endl;
+        }
+
         //Coleta dos valores
         std::cout << "Digite as letra a esquerda do subconjunto(limite 10 letras): ";
 
@@ -29,16 +42,21 @@ int main()
 
         std::cout << std::endl;//Pular uma linha.
 
-        //Mostrar os valores e perguntar se necessita escrever mais subconjuntos.
-        if(esq[0] != 'y')
+        //Coletar e mostrar os valores e perguntar se necessita escrever mais subconjuntos.
+        inicializar_subcon(&f);
+
+        if(esq[0] != 'y' && guardar_subconj(&f,esq,dir) == 0)
         {
-            std::cout << "Suconjunto (" << esq <<","<< dir << ") coletado!" << std::endl;
-
+            std::cout << "Subconjunto (" << esq <<","<< dir << ") coletado!" << std::endl;
             std::cout << "Quando terminar digite somente 'y' na coleta dos valores" << std::endl;
-             std::cout << "A letra 'Y'(ipsilon maiusculo) indica lambda." << std::endl;
-        }
+            std::cout << "A letra 'Y'(ipsilon maiusculo) indica lambda." << std::endl;
+        }else if(esq[0] == 'y') var_controle = 1;
 
-    }
+    } while(var_controle != 1);
+
+    //Mostrar os valores coletados
+
+    mostrar_linguagem(&f);
 
     return 0;
 }

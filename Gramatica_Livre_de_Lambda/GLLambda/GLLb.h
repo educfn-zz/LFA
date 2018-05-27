@@ -4,6 +4,7 @@
 #define GLLB_H
 #include <iostream>
 #include <cstdlib>
+#include <cstring>
 
 typedef struct subconjunto * conj;
 
@@ -36,7 +37,7 @@ struct subconjunto
 void inicializar_subcon(ling_f * f);
 //Inicializa as variaveis do tipo 'ling_f'(linguagem f)
 
-int guardar_subconj(ling_f * l, char * esq, char * dir);
+int guardar_subconj(ling_f * l, char * ptr_esq, char * ptr_dir);
 //Descricao: Este metodo ira realizar a adicicao de um novo subconjunto a lista de subconjuntos.
 //&ling_f: repassar o objeto 'ling_f' para o metodo para realizar a adiciocao
 //Erro: Retorna '-1' caso alguma falha ocorra no processo.
