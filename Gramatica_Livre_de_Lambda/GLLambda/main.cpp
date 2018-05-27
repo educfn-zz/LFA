@@ -55,11 +55,15 @@ int main()
 
         } while(esq[0] != 'y');
 
-        //Mostrar os subconjuntos coletados
+        //Mostrar os subconjuntos coletados.
 
         mostrar_linguagem(&f);
 
-        //Desalocar memoria
+        //Expandir linguagem - Area de Testes.
+
+        expandir_linguagem(&f,"AS");
+
+        //Desalocar memoria.
         while(f.subconjuntos != nullptr)
         {
             free(f.subconjuntos->esq);
@@ -70,7 +74,7 @@ int main()
         }
 
         //Pergunta ao usuario se deseja colocar outra linguagem.
-        std::cout << "Deseja colocar uma nova linguagem?(S-sim,N-Nao)"<< std::endl;
+        std::cout << "Deseja colocar uma nova linguagem?(Qualquer caracter-sim,N-Nao)"<< std::endl;
         char resposta[1];
         std::cin >> resposta;
         if(resposta[0] == 'N' || resposta[0] == 'n') var_controle = 1;

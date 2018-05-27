@@ -1,6 +1,7 @@
-//Autor: Eduardo Cardoso Fernandes Neto - 5 semestre - Ciencia da Compuacao
+//Autor: Eduardo Cardoso Fernandes Neto - 5 semestre - Ciencia da Computacao
 
 #include "GLLb.h"
+#define LIMITE_STRING 10
 
 void inicializar_subcon(ling_f * f)
 {
@@ -41,7 +42,7 @@ int guardar_subconj(ling_f * l, char * esq, char * dir)
         if(l->subconjuntos == nullptr) l->subconjuntos = ptr_aux;//Caso seja o primeiro subconjunto a
         //ser guardado este 'if' sera ativado.
 
-        //repassar a posição das variaveis.
+        //repassar a posiÑ‡Ñƒo das variaveis.
         ptr_aux->dir = dir;
         ptr_aux->esq = esq;
 
@@ -91,39 +92,69 @@ void expandir_linguagem(ling_f * l, char * l_exp)
 
 {
     conj ptr_aux = l->subconjuntos;
+    int contador=0;//Ira contar a quantidade de subconjuntos.
 
-	while(ptr_aux != nullptr)
+    while(ptr_aux != nullptr)//Ira contar quantidade de subconjuntos.
+    {
+        ptr_aux = ptr_aux->prox;
+        contador++;
+    }
 
+    for(int z=0;z<contador;z++)//1 - For (Ira contar os subconjuntos).
 	{
-    while(ptr_aux->prox != nullptr)
+	    for(int i=0;i<((int)strlen(l_exp));i++)//2 - For (Ira alternar entre as letras a serem procuradas).
+        {
+            int contador_letra=0;//Armazena quantas vezes uma letra repete.
 
-		{
+            for(int j=0;j<((int)strlen(ptr_aux->dir));j++)//3 - For (Ira contar cada letra da parte direita do subconjunto).
+            {
+                if(ptr_aux->dir[j] ==  l_exp[i]) contador_letra++; //Conta a quantidade de letras que aparecem
+            }
 
-			int contador=0;
+            if(contador_letra > 0)//Se nÃ£o tiver letra iguala procurada pula essa parte.
+            {
+                int contador1=0;//Ira contar quantas letras devem ser tiradas ao fim de um 'for' completo.
+                int contador2=0;//Ira contar quantas letras foram tiradas ao
+                //longo das interacoes do 'for' abaixo.
+
+                char * ptr_c = ptr_aux->dir;//Auxiliara na leitura da variavel 'dir' abaixo.
+
+                while(contador1<contador_letra)//Somente ira terminar quando todas as variacoes
+                //possiveis forem feitas.
+                {
+                    for(int l=0;l<(int)strlen(ptr_c) && contador2 <= contador1;l++)//Contador de letras.
+                    {
+                        if(ptr_c[l] == l_exp[i])
+                        {
+                            char * cpy;
+                            if((cpy = (char *) malloc(1 + sizeof(char) * strlen(ptr_c)))==nullptr)
+                            {
+                                std::cerr << "Erro: GLLb - expandir linguagem: erro de alocacao de memoria!"
+                                << std::endl;
+                            }
+
+                            strcpy(cpy,ptr_c);
 
 
-			while((ptr_aux->dir + contador++) != '\0')
-
-			{
-
-				int contador2 = 0;
+                        }
+                    }
+                }
 
 
-				while(l_exp + contador2++ != '\0')
+                char * c_letras;//Conjunto de letras
+                int tam_string = (int) strlen(ptr_aux->dir);//Tamanho da string da direita do subconjunto.
 
-				{
+                //Alocacao de memoria baseado no tamanho da string da variavel 'dir'.
+                if((c_letras = (char *) malloc(sizeof(char)* tam_string))==nullptr)
+                {
+                    std::cerr << "Erro: GLLb - expandir_linguagem: Erro de alocacao de memoria!"
+                    << std::endl;
+                }
+            }
 
-
-
-				}
-
-			}
-
-	 	}
-
-	}
-
-}
+        }//Fim do 2 - For
+	}//Fim do 1 - For
+}//Fim do metodo: expandir_linguagem
 
 
 
