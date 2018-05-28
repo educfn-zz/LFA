@@ -1,4 +1,9 @@
-//Eduardo Cardoso Fernandes Neto - 5 Semestre - 9197350
+//Eduardo Cardoso Fernandes Neto - 5 Semestre - 9197350.
+//Pedro Martins Feliciano - 5 Semestre - 201625910.
+//Vinícius Blanco dos Santos - 5 Semestre - 201626928.
+
+//Obs:Devido a complexidade da 'expansao da linguagem', nao foi possivel terminar esta funcao e consequentemente
+//a funcao 'uniao' que iria realizar a retirada dos valores lambda.
 
 #include <iostream>
 #include "GLLb.h"
@@ -59,9 +64,9 @@ int main()
 
         mostrar_linguagem(&f);
 
-        //Expandir linguagem - Area de Testes.
+        //Expandir linguagem
 
-        expandir_linguagem(&f,"AS");
+        //expandir_linguagem(&f,"BS"); - Nao utiliza esse metodo, pois apresenta erro desconhecido.
 
         //Desalocar memoria.
         while(f.subconjuntos != nullptr)

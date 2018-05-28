@@ -122,34 +122,45 @@ void expandir_linguagem(ling_f * l, char * l_exp)
                 while(contador1<contador_letra)//Somente ira terminar quando todas as variacoes
                 //possiveis forem feitas.
                 {
-                    for(int l=0;l<(int)strlen(ptr_c) && contador2 <= contador1;l++)//Contador de letras.
+                    for(int p=0;p<(int)strlen(ptr_c);p++)//Contador de letras.
                     {
-                        if(ptr_c[l] == l_exp[i])
+                        if(ptr_c[p] != l_exp[i]) continue;
+                        contador2=0;//Reset do contador2.
+
+                        char * cpy;
+
+                        if((cpy = (char *) malloc(1 + sizeof(char) * strlen(ptr_c)))==nullptr)
                         {
-                            char * cpy;
-                            if((cpy = (char *) malloc(1 + sizeof(char) * strlen(ptr_c)))==nullptr)
+                            std::cerr << "Erro: GLLb - expandir linguagem: erro de alocacao de memoria!"
+                            << std::endl;
+                        }
+
+                        strcpy(cpy,ptr_c);
+
+                        for(int n=p+1;n<(int)strlen(ptr_c);n++)
+                        {
+                            contador2=0;//Rm cada interacao reseta o contador2.
+
+                            cpy[p] = ' ';
+
+                            contador2++;
+                            for(int yz=n;yz<(int)strlen(ptr_c) && contador2 < contador1+1;yz++)
                             {
-                                std::cerr << "Erro: GLLb - expandir linguagem: erro de alocacao de memoria!"
-                                << std::endl;
+                                if(ptr_c[yz] == l_exp[i])
+                                {
+                                    cpy[yz] == ' ';
+                                    contador2++;
+                                    n=yz+1;//indica para 'n' que na proxima interacao seguir apartir deste valor.
+                                }
                             }
 
-                            strcpy(cpy,ptr_c);
-
-
                         }
+
+                        if(contador2 == contador1+1) guardar_subconj(l,ptr_aux->esq,cpy);
                     }
+                    contador1++;
                 }
 
-
-                char * c_letras;//Conjunto de letras
-                int tam_string = (int) strlen(ptr_aux->dir);//Tamanho da string da direita do subconjunto.
-
-                //Alocacao de memoria baseado no tamanho da string da variavel 'dir'.
-                if((c_letras = (char *) malloc(sizeof(char)* tam_string))==nullptr)
-                {
-                    std::cerr << "Erro: GLLb - expandir_linguagem: Erro de alocacao de memoria!"
-                    << std::endl;
-                }
             }
 
         }//Fim do 2 - For
